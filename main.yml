@@ -1,12 +1,12 @@
 ---
-- name: check java installed on target machine
+- hosts: all
   tasks:
-  - name: check java 
-    shell: java -version
-    register: version
-  - name: check java with other command
-    shell: command -v java
-    register: version2
-  - name: Debug module
+  - name: check JAVA folder exist on server
+    shell: find / -iname "*java*" -print
+    become: yes
+    ignore_errors: yes
+    register: output
+    
+  - name: Debug the output
     debug:
-     msg: "This is first output {{ version }} This  is second output {{ version2 }}"
+     var: output
