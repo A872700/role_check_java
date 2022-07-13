@@ -9,4 +9,4 @@
     
   - name: Debug the output
     debug:
-     var: output
+     msg:"hi - {{ output }}"
